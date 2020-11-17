@@ -12,4 +12,9 @@ describe("App component", () => {
     const { getByTestId } = render(<Outcome result="left" />);
     expect(getByTestId("outcome")).toHaveTextContent("Left wins!");
   });
+
+  it("displays 'Draw!' when there's a draw", () => {
+    const { getByTestId } = render(<Outcome result="draw" />);
+    expect(getByTestId("outcome")).toHaveTextContent("Draw!");
+  });
 });
