@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
     "cypress": "^5.6.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
@@ -15,6 +16,7 @@
   },
   "scripts": {
     "e2e": "cypress run",
+    "lint": "eslint cypress/ src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -24,6 +26,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "extends": [
+          "plugin:cypress/recommended"
+        ],
+        "files": [
+          "cypress/**/*.js"
+        ]
+      }
     ]
   },
   "browserslist": {
