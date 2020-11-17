@@ -7,4 +7,9 @@ describe("App component", () => {
     const { getByTestId } = render(<Outcome result="right" />);
     expect(getByTestId("outcome")).toHaveTextContent("Right wins!");
   });
+
+  it("displays 'Left wins!' when left wins", () => {
+    const { getByTestId } = render(<Outcome result="left" />);
+    expect(getByTestId("outcome")).toHaveTextContent("Left wins!");
+  });
 });
