@@ -23,6 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "./rps-e2e/",
   "eslintConfig": {
     "extends": [
       "react-app",
