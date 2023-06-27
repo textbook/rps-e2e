@@ -1,3 +1,14 @@
-export default function Outcome() {
-  return <div data-testid="outcome">Right wins!</div>;
+export default function Outcome({ result }) {
+  return <div data-testid="outcome">{display(result)}</div>;
+}
+
+function display(result) {
+  switch (result) {
+    case "left":
+      return "Left wins!";
+    case "right":
+      return "Right wins!";
+    default:
+      throw new Error(`unknown result ${result}`);
+  }
 }
