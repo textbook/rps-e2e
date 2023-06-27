@@ -12,4 +12,9 @@ describe("App component", () => {
     render(<Outcome result="left" />);
     expect(screen.getByTestId("outcome")).toHaveTextContent("Left wins!");
   });
+
+  it("displays 'Draw!' when there's a draw", () => {
+    render(<Outcome result="draw" />);
+    expect(screen.getByTestId("outcome")).toHaveTextContent("Draw!");
+  });
 });
