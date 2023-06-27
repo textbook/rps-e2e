@@ -1,0 +1,27 @@
+name: "Node.js CI"
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: 16
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test -- --coverage
+        env:
+          FORCE_COLOR: true
+      - run: npm run e2e:ci
+      - run: npm run build
+      - run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- --user 'github-actions-bot <support+actions@github.com>'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
